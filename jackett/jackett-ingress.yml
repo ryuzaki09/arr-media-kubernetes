@@ -1,0 +1,18 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: jackett-ingress
+  # annotations:
+    # kubernetes.io/tls-acme: "true"
+spec:
+  rules:
+  - host: jackett.momochan.com
+    http:
+      paths:
+      - path: /
+        backend:
+          service:
+            name: jackett
+            port:
+              number: 80
+        pathType: Prefix

@@ -1,0 +1,38 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: jackett
+  name: jackett
+spec:
+  replicas: 1 
+  selector:
+    matchLabels:
+      app: jackett
+  template:
+    metadata:
+      labels: 
+        app: jackett
+    spec:
+      containers:
+        - name: jackett-container
+          image: linuxserver/jackett
+          imagePullPolicy: IfNotPresent
+          ports: 
+            - containerPort: 9117
+          env:
+            - name: PGID
+              value: "1000"
+            - name: PUID
+              value: "1000"
+          volumeMounts:
+            - name: "media-pv"
+              mountPath: /config
+              subPath: configs/jackett #path /mnt/mediavolume/configs/jackett where jackett writes the configurations
+            - name: "media-pv"
+              mountPath: /downloads
+              subPath: downloads/jackett # path /mnt/mediavolume/downloads/jackett 
+      volumes:
+        - name: "media-pv"
+          persistentVolumeClaim:
+            claimName: "media-persist-volume-claim"
