@@ -4,6 +4,7 @@ metadata:
   labels:
     app: radarr
   name: radarr
+  namespace: home-media
 spec:
   replicas: 1
   selector:
@@ -20,3 +21,27 @@ spec:
           imagePullPolicy: IfNotPresent
           ports: 
             - containerPort: 7878
+          env:
+            - name: PGID
+              value: "1000"
+            - name: PUID
+              value: "1000"
+          volumeMounts:
+            - name: "media-pv"
+              mountPath: /config
+              subPath: configs/radarr #path /mnt/mediavolume/configs/radarr where radarr writes the configurations
+            - name: "media-pv"
+              mountPath: /downloads/transmission
+              subPath: downloads/transmission # path /mnt/mediavolume/downloads/transmission where radarr picks up downloaded movies
+            - name: "media-pv"
+              mountPath: /movies
+              subPath: library/movies # path /mnt/mediavolume/library/movies where radarr moves and renames the episodes
+            - name: "mounted-network-share"
+              mountPath: /mnt/pandoraserver/video
+      volumes:
+        - name: "media-pv"
+          persistentVolumeClaim:
+            claimName: media-persist-volume-claim
+        - name: "mounted-network-share"
+          hostPath:
+            path: /mnt/pandoraserver/video
