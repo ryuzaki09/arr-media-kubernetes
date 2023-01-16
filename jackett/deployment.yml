@@ -4,6 +4,7 @@ metadata:
   labels:
     app: jackett
   name: jackett
+  namespace: home-media
 spec:
   replicas: 1 
   selector:
@@ -35,4 +36,4 @@ spec:
       volumes:
         - name: "media-pv"
           persistentVolumeClaim:
-            claimName: "media-persist-volume-claim"
+            claimName: media-persist-volume-claim

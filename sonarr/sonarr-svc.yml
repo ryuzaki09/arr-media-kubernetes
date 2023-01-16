@@ -1,7 +1,8 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: sonarr
+  name: sonarr-service
+  namespace: home-media
   # labels:
     # app: sonarr
     # kubernetes.io/name: "sonarr"

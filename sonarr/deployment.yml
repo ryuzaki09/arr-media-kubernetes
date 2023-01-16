@@ -4,6 +4,7 @@ metadata:
   labels:
     app: sonarr
   name: sonarr
+  namespace: home-media
 spec:
   replicas: 3
   selector:
@@ -15,7 +16,7 @@ spec:
         app: sonarr
     spec:
       containers:
-        - name: sonarr
+        - name: sonarr-container
           image: linuxserver/sonarr
           imagePullPolicy: IfNotPresent
           ports: 
@@ -40,7 +41,7 @@ spec:
       volumes:
         - name: "media-pv"
           persistentVolumeClaim:
-            claimName: "media-persist-volume-claim"
+            claimName: media-persist-volume-claim
         - name: "mounted-network-share"
           hostPath:
             path: /mnt/pandoraserver/video

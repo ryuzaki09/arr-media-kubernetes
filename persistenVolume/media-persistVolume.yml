@@ -2,11 +2,10 @@
 apiVersion: v1
 kind: PersistentVolume
 metadata:
-  name: "media-persist-volume"
+  name: media-persist-volume
   labels:
-    type: "local"
+    type: local
 spec:
-  # storageClassName: "manual"
   storageClassName: standard
   capacity:
     storage: 50Gi
@@ -22,11 +21,10 @@ spec:
 apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
-  # namespace: "media"
-  name: "media-persist-volume-claim"
+  namespace: home-media
+  name: media-persist-volume-claim
 spec:
-  volumeName: "media-persist-volume"
-  # storageClassName: "manual"
+  volumeName: media-persist-volume
   storageClassName: standard
   accessModes:
     - ReadWriteMany

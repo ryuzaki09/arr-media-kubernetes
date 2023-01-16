@@ -1,9 +1,8 @@
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
-  name: sonarr
-  # annotations:
-    # kubernetes.io/tls-acme: "true"
+  name: sonarr-ingress
+  namespace: home-media
 spec:
   rules:
   - host: sonarr.momochan.com
@@ -12,7 +11,7 @@ spec:
       - path: /
         backend:
           service:
-            name: sonarr
+            name: sonarr-service
             port:
               number: 80
         pathType: Prefix
