@@ -1,0 +1,17 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: transmission-ingress
+  namespace: home-media
+spec:
+  rules:
+  - host: transmission.momochan.com
+    http:
+      paths:
+      - path: /
+        backend:
+          service:
+            name: transmission-service
+            port:
+              number: 80
+        pathType: Prefix

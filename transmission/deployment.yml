@@ -1,0 +1,46 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: transmission
+  name: transmission
+  namespace: home-media
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: transmission
+  template:
+    metadata:
+      labels: 
+        app: transmission
+    spec:
+      containers:
+        - name: transmission-container
+          image: linuxserver/transmission
+          imagePullPolicy: IfNotPresent
+          ports: 
+            - name: web-port
+              containerPort: 9091
+            - name: torrent-tcp
+              protocol: TCP
+              containerPort: 51413
+            - name: torrent-udp
+              protocol: UDP
+              containerPort: 51413
+          env:
+            - name: PGID
+              value: "1000"
+            - name: PUID
+              value: "1000"
+          volumeMounts:
+            - name: "media-pv"
+              mountPath: /data
+              subPath: configs/transmission-data #path /mnt/mediavolume/configs/radarr where radarr writes the configurations
+            - name: "media-pv"
+              mountPath: /downloads/transmission
+              subPath: downloads/transmission # path /mnt/mediavolume/downloads/transmission where radarr picks up downloaded movies
+      volumes:
+        - name: "media-pv"
+          persistentVolumeClaim:
+            claimName: media-persist-volume-claim
