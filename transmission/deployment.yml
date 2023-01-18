@@ -33,10 +33,12 @@ spec:
               value: "1000"
             - name: PUID
               value: "1000"
+            - name: TRANSMISSION_DOWNLOAD_DIR
+              value: "/downloads/transmission"
           volumeMounts:
             - name: "media-pv"
-              mountPath: /data
-              subPath: configs/transmission-data #path /mnt/mediavolume/configs/radarr where radarr writes the configurations
+              mountPath: /config
+              subPath: configs/transmission-data #path /mnt/mediavolume/configs/radarr where transmission writes the configurations
             - name: "media-pv"
               mountPath: /downloads/transmission
               subPath: downloads/transmission # path /mnt/mediavolume/downloads/transmission where radarr picks up downloaded movies
