@@ -38,10 +38,10 @@ spec:
           volumeMounts:
             - name: "media-pv"
               mountPath: /config
-              subPath: configs/transmission-data #path /mnt/mediavolume/configs/radarr where transmission writes the configurations
+              subPath: configs/transmission-data #path /mnt/mediavolume/configs/transmission-data where transmission writes the configurations
             - name: "media-pv"
               mountPath: /downloads/transmission
-              subPath: downloads/transmission # path /mnt/mediavolume/downloads/transmission where radarr picks up downloaded movies
+              subPath: downloads/transmission # path /mnt/mediavolume/downloads/transmission where transmission downloads torrents 
       volumes:
         - name: "media-pv"
           persistentVolumeClaim:
