@@ -33,6 +33,9 @@ spec:
             - name: "media-pv"
               mountPath: /downloads/transmission
               subPath: downloads/transmission # path /mnt/mediavolume/downloads/transmission where sonarr picks up downloaded episodes
+            # - name: "media-pv"
+              # mountPath: /downloads/complete
+              # subPath: downloads/complete # path /mnt/mediavolume/downloads/transmission where sonarr picks up downloaded episodes
             - name: "media-pv"
               mountPath: /library
               subPath: library/tv # path /mnt/mediavolume/library/tv where sonarr moves and renames the episodes

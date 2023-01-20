@@ -42,6 +42,9 @@ spec:
             - name: "media-pv"
               mountPath: /downloads/transmission
               subPath: downloads/transmission # path /mnt/mediavolume/downloads/transmission where transmission downloads torrents 
+            # - name: "media-pv"
+              # mountPath: /downloads/complete
+              # subPath: downloads/complete # path /mnt/mediavolume/downloads/complete where transmission completes downloads 
       volumes:
         - name: "media-pv"
           persistentVolumeClaim:
