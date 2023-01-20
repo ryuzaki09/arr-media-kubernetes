@@ -36,4 +36,4 @@ spec:
       volumes:
         - name: "media-pv"
           persistentVolumeClaim:
-            claimName: media-persist-volume-claim
+            claimName: media-pv-claim

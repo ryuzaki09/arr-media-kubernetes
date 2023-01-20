@@ -2,9 +2,7 @@
 apiVersion: v1
 kind: PersistentVolume
 metadata:
-  name: media-persist-volume
-  labels:
-    type: local
+  name: media-pv
 spec:
   storageClassName: standard
   capacity:
@@ -22,9 +20,9 @@ apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
   namespace: home-media
-  name: media-persist-volume-claim
+  name: media-pv-claim
 spec:
-  volumeName: media-persist-volume
+  volumeName: media-pv
   storageClassName: standard
   accessModes:
     - ReadWriteMany

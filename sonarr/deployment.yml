@@ -41,7 +41,11 @@ spec:
       volumes:
         - name: "media-pv"
           persistentVolumeClaim:
-            claimName: media-persist-volume-claim
+            claimName: media-pv-claim
         - name: "mounted-network-share"
           hostPath:
             path: /mnt/pandoraserver/video
+        # - name: "nfs-vol"
+          # nfs:
+            # server: 192.168.1.204
+            # path: /volume1/video
