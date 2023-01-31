@@ -34,6 +34,9 @@ spec:
               mountPath: /downloads/transmission
               subPath: downloads/transmission # path /mnt/mediavolume/downloads/transmission where radarr picks up downloaded movies
             - name: "media-pv"
+              mountPath: /downloads/complete
+              subPath: downloads/complete # path /mnt/mediavolume/downloads/transmission where radarr picks up downloaded movies
+            - name: "media-pv"
               mountPath: /movies
               subPath: library/movies # path /mnt/mediavolume/library/movies where radarr moves and renames the episodes
             - name: "mounted-network-share"
