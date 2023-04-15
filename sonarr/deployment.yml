@@ -41,6 +41,8 @@ spec:
               subPath: library/tv # path /mnt/mediavolume/library/tv where sonarr moves and renames the episodes
             - name: "mounted-network-share"
               mountPath: /mnt/pandoraserver/video
+            - name: "mounted-mediajunk-network-share"
+              mountPath: /mnt/mediajunk/video
       volumes:
         - name: "media-pv"
           persistentVolumeClaim:
@@ -48,6 +50,9 @@ spec:
         - name: "mounted-network-share"
           hostPath:
             path: /mnt/pandoraserver/video
+        - name: "mounted-mediajunk-network-share"
+          hostPath:
+            path: /mnt/mediajunk/video
         # - name: "nfs-vol"
           # nfs:
             # server: 192.168.1.204
