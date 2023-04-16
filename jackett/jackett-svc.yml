@@ -3,9 +3,6 @@ kind: Service
 metadata:
   name: jackett-service
   namespace: home-media
-  # labels:
-    # app: sonarr
-    # kubernetes.io/name: "sonarr"
 spec:
   selector:
     app: jackett

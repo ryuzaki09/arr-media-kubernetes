@@ -41,6 +41,8 @@ spec:
               subPath: library/movies # path /mnt/mediavolume/library/movies where radarr moves and renames the episodes
             - name: "mounted-network-share"
               mountPath: /mnt/pandoraserver/video
+            - name: "mounted-mediajunk-network-share"
+              mountPath: /mnt/mediajunk/video
       volumes:
         - name: "media-pv"
           persistentVolumeClaim:
@@ -48,3 +50,6 @@ spec:
         - name: "mounted-network-share"
           hostPath:
             path: /mnt/pandoraserver/video
+        - name: "mounted-mediajunk-network-share"
+          hostPath:
+            path: /mnt/mediajunk/video
