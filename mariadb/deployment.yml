@@ -1,0 +1,31 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: mariadb-deployment
+  # labels:
+    # app: mariadb
+    # type: database
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: mariadb
+  template:
+    metadata:
+      labels:
+        app: mariadb
+        # type: database
+    spec:
+      containers:
+        - name: mariadb
+          image: mariadb
+          ports:
+            - containerPort: 3306
+              name: db-port
+          env:
+            - name: MYSQL_ROOT_PASSWORD
+              value: secret
+            - name: MARIADB_ALLOW_EMPTY_ROOT_PASSWORD
+              value: "0" # if it is 1 and root_password is set, root_password takes precedance
+            - name: MARIADB_ROOT_PASSWORD
+              value: secret
