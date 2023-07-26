@@ -36,4 +36,4 @@ spec:
       volumes:
         - name: "media-pv"
           persistentVolumeClaim:
-            claimName: media-pv-claim
+            claimName: nfs-media-pv-claim
